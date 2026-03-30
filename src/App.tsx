@@ -43,6 +43,7 @@ import {
   BookOpen,
   Share2,
   Link2,
+  Download,
 } from "lucide-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -96,6 +97,10 @@ const NAV_LINKS = [
   { name: "Experience", href: "#experience" },
   { name: "Skills", href: "#skills" },
 ];
+
+/** Place your PDF at `public/cv.pdf` (or change path + filename below). */
+const CV_HREF = "/cv.pdf";
+const CV_DOWNLOAD_FILENAME = "Naveen_Yanamala_CV.pdf";
 
 const TECH_STACK = [
   { name: "Node.js", icon: <Server className="text-accent" /> },
@@ -269,15 +274,25 @@ const Navbar = () => {
           ))}
         </div>
 
-        <motion.a
-          href="#contact"
-          onClick={(e) => handleInPageNav(e, "#contact", lenisApi)}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="px-6 py-2 bg-ink text-bg text-sm font-bold rounded-full hover:bg-bg hover:text-ink border border-ink transition-all"
-        >
-          Contact Me
-        </motion.a>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <a
+            href={CV_HREF}
+            download={CV_DOWNLOAD_FILENAME}
+            className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-2 text-xs font-semibold text-ink transition-colors hover:border-accent/50 hover:text-accent sm:gap-2 sm:px-4 sm:text-sm"
+          >
+            <Download className="size-3.5 shrink-0 sm:size-4" aria-hidden />
+            CV
+          </a>
+          <motion.a
+            href="#contact"
+            onClick={(e) => handleInPageNav(e, "#contact", lenisApi)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-4 py-2 sm:px-6 bg-ink text-bg text-xs font-bold rounded-full hover:bg-bg hover:text-ink border border-ink transition-all sm:text-sm"
+          >
+            Contact Me
+          </motion.a>
+        </div>
       </div>
     </motion.nav>
   );
@@ -441,6 +456,16 @@ const Hero = () => {
               className="inline-flex items-center gap-2 px-8 py-4 bg-surface border border-border text-ink font-bold rounded-full hover:border-accent/50 transition-colors"
             >
               Get in Touch
+            </motion.a>
+            <motion.a
+              href={CV_HREF}
+              download={CV_DOWNLOAD_FILENAME}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-surface border border-border text-ink font-bold rounded-full hover:border-accent/50 transition-colors"
+            >
+              <Download className="size-5 shrink-0" aria-hidden />
+              Download CV
             </motion.a>
           </div>
         </motion.div>

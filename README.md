@@ -58,6 +58,10 @@ Files in **`public/`** are served from the site root. Reference images with a **
 
 Not `./images/...` (relative URLs break on non-root routes).
 
+### CV / resume download
+
+Add your PDF as **`public/cv.pdf`**. The hero and navbar link to `/cv.pdf` and suggest the filename `Naveen_Yanamala_CV.pdf` when the browser saves the file. To use another path or name, edit `CV_HREF` and `CV_DOWNLOAD_FILENAME` in `src/App.tsx`.
+
 ## License
 
 See SPDX headers in source files where applicable (e.g. `App.tsx`).
